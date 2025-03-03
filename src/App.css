@@ -1,0 +1,247 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap");
+body {
+  background-color: hsl(148, 38%, 91%);
+}
+
+.App {
+  padding: 1rem;
+  background-color: hsl(148, 38%, 91%);
+  font-family: "Karla", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.required::after {
+  content: " *";
+  color: green;
+}
+
+form {
+  display: grid;
+  padding: 1.5rem;
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 15px;
+}
+form h1 {
+  font-family: "Karla", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+label, textarea {
+  border-radius: 5px;
+  padding-top: 1.5rem;
+  padding-bottom: 0.5rem;
+}
+
+input {
+  padding: 0.8rem;
+  border-radius: 5px;
+}
+input[type=text], input[type=email] {
+  border: 1px solid hsl(186, 15%, 59%);
+}
+input[type=text]:focus, input[type=email]:focus {
+  border-color: hsl(169, 82%, 27%);
+  outline: none;
+}
+
+span {
+  margin-top: 0.5rem;
+  color: hsl(0, 66%, 54%);
+}
+
+input[type=radio],
+input[type=checkbox] {
+  appearance: none; /* Hide default styles */
+  -webkit-appearance: none; /* For Safari */
+  -moz-appearance: none; /* For Firefox */
+  width: 20px; /* Set width and height for custom styling */
+  height: 20px;
+  margin: 0;
+  cursor: pointer;
+  position: relative;
+  margin: 0 0.5rem;
+  outline: none;
+}
+
+input[type=radio]:before {
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border: 2px gray solid;
+  background-size: cover;
+  position: absolute;
+  top: 10%;
+  left: 17%;
+  border-radius: 50%; /* Make it round for radio buttons */
+}
+
+input[type=radio]:checked:before {
+  background: url("./assets/images/icon-radio-selected.svg") no-repeat center center; /* Custom checked image */
+  background-size: cover;
+  border: none;
+  width: 20px;
+  height: 20px;
+}
+
+input[type=checkbox]:before {
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border: 2px gray solid;
+  background-size: cover;
+  position: absolute;
+  top: 10%;
+  left: 17%;
+  border-radius: 0; /* Make it round for radio buttons */
+}
+
+input[type=checkbox]:checked:before {
+  background: url("./assets/images/icon-checkbox-check.svg") no-repeat center center; /* Custom checked image */
+  background-size: cover;
+  border: none;
+  width: 20px;
+  height: 20px;
+}
+
+.input-text {
+  display: grid;
+  margin-bottom: 1.5rem;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+}
+fieldset legend {
+  margin: 1rem 0;
+}
+fieldset label {
+  border: 1px gray solid;
+  display: flex;
+  align-items: center;
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+}
+fieldset input[type=radio]:checked + label {
+  background-color: hsl(148, 38%, 91%);
+}
+fieldset label:has(input[type=radio]:checked) {
+  background-color: hsl(148, 38%, 91%);
+  border: solid 1px hsl(169, 82%, 27%);
+}
+
+.box {
+  position: relative;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 2.2rem 0;
+}
+.box input {
+  margin: 0;
+}
+
+.checkbox-warn {
+  position: absolute;
+  bottom: 0;
+}
+
+input[type=submit] {
+  background-color: hsl(169, 82%, 27%);
+  color: hsl(0, 0%, 100%);
+  border: none;
+}
+
+.msg {
+  padding-bottom: 0;
+}
+
+.submitted-popup {
+  /* width: 100vw; */
+  /* height: 100vh; */
+  border: red 1px solid;
+  /* position: sticky; */
+  /* top: 0; */
+  /* display: flex; */
+  div {
+  /* position: absolute; */
+    background-color: hsl(187, 24%, 22%);
+    /* left: 50%; */
+    /* transform: translate(-50%, -50%); */
+    /* top: 15%; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    position: fixed;
+    top: 0;
+    padding: 1rem;
+    border-radius: 10px;
+    color: hsl(0, 0%, 100%);
+    /* width: 70%; */
+    /* width: auto;
+    height: auto; */
+  }
+}
+.submitted-popup img {
+  margin-right: 1rem;
+  position: relative;
+  top: 3px;
+}
+.submitted-popup h1 {
+  font-size: 1.2rem;
+}
+
+@media screen and (min-width: 400px) {
+  fieldset div {
+    display: flex;
+    justify-content: space-between;
+    -moz-column-gap: 1rem;
+         column-gap: 1rem;
+  }
+  fieldset div label {
+    width: 100%;
+  }
+  .input-text {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto auto auto auto auto;
+    grid-template-areas: "F-title L-title" "F-input L-input" "F-warn L-warn" "eTitle eTitle" "eInput eInput" "eWarn eWarn";
+    -moz-column-gap: 1rem;
+         column-gap: 1rem;
+  }
+  .input-text label[for=Fname] {
+    grid-area: F-title;
+  }
+  .input-text .F-name-input {
+    grid-area: F-input;
+  }
+  .input-text .Fname-warn {
+    grid-area: F-warn;
+  }
+  .input-text label[for=Lname] {
+    grid-area: L-title;
+  }
+  .input-text .L-name-input {
+    grid-area: L-input;
+  }
+  .input-text .Lname-warn {
+    grid-area: L-warn;
+  }
+  .input-text label[for=mail] {
+    grid-area: eTitle;
+  }
+  .input-text input[type=email] {
+    grid-area: eInput;
+  }
+  .input-text .email-warn {
+    grid-area: eWarn;
+  }
+  .submitted-popup {
+    width: initial;
+  }
+}/*# sourceMappingURL=App.css.map */
