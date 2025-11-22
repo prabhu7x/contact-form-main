@@ -1,13 +1,13 @@
-import './App.css'
-import Form from './features/Form'
+import "./App.css";
+// import "./App.scss";
+import Form from "./features/Form";
 
 function App() {
-
   return (
-    <div className='App'>
-    <Form /> 
+    <div className="App">
+      <Form />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

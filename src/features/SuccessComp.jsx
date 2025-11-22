@@ -1,15 +1,14 @@
-import React from 'react'
-import successIcon from '../assets/images/icon-success-check.svg'
+import tick_mark from '../assets/images/icon-success-check.svg'
 
 function SuccessComp() {
   return (
-    <div className="submitted-popup">
-      <div>
+    <div id="submitted-popup">
+      <div className="popup-content">
         <h1>
-          <img src={successIcon} alt="confirmed image" />
+          <img src={tick_mark} alt="tick mark" />
           Message Sent!
         </h1>
-        <p>Thanks for completing the form.We'll be in touch soon!</p>
+        <p>Thanks for completing the form. We'll be in touch soon!</p>
       </div>
     </div>
   );

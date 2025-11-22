@@ -21,9 +21,16 @@ $White: hsl(0, 0%, 100%);
 $Grey-500-medium: hsl(186, 15%, 59%);
 $Grey-900-darker: hsl(187, 24%, 22%);
 
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 body {
   background-color: $Green-200-lighter;
+  position: relative;
 }
+
 .App {
   padding: 1rem;
   background-color: $Green-200-lighter;
@@ -36,30 +43,38 @@ body {
 }
 
 form {
-    display: grid;
-    padding: 1.5rem;
-    background-color: $White;
-    border-radius: 15px;
-    h1 {
-      @include karla(700);
-    }
+  display: grid;
+  padding: 1.5rem;
+  background-color: $White;
+  border-radius: 15px;
+
+  h1 {
+    @include karla(700);
+  }
 }
-label , textarea {
-    border-radius: 5px;
-    padding-top: 1.5rem;
-    padding-bottom: .5rem;
+
+label,
+textarea {
+  border-radius: 5px;
+  padding-top: 1.5rem;
+  padding-bottom: .5rem;
 }
+
 input {
   padding: .8rem;
   border-radius: 5px;
-  &[type="text"] , &[type="email"] {
-    border: 1px solid $Grey-500-medium;
+
+  &[type="text"],
+  &[type="email"] {
+    border: 2px solid $Grey-500-medium;
+
     &:focus {
       border-color: $Green-600-medium;
       outline: none;
     }
   }
 }
+
 span {
   margin-top: .5rem;
   color: $Red;
@@ -68,10 +83,14 @@ span {
 
 input[type="radio"],
 input[type="checkbox"] {
-  appearance: none; /* Hide default styles */
-  -webkit-appearance: none; /* For Safari */
-  -moz-appearance: none; /* For Firefox */
-  width: 20px; /* Set width and height for custom styling */
+  appearance: none;
+  /* Hide default styles */
+  -webkit-appearance: none;
+  /* For Safari */
+  -moz-appearance: none;
+  /* For Firefox */
+  width: 20px;
+  /* Set width and height for custom styling */
   height: 20px;
   margin: 0;
   cursor: pointer;
@@ -80,174 +99,201 @@ input[type="checkbox"] {
   outline: none;
 }
 
-  @mixin radio-checkbox($topVal, $leftVal,$border_radius){
-      content: "";
-      display: inline-block;
-      width: 15px;
-      height: 15px;
-      border: 2px gray solid;
-      background-size: cover;
-      position: absolute;
-      top: $topVal;
-      left: $leftVal;
-      border-radius: $border_radius; /* Make it round for radio buttons */
-    }
+@mixin radio-checkbox($topVal, $leftVal, $border_radius) {
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border: 2px gray solid;
+  background-size: cover;
+  position: absolute;
+  top: $topVal;
+  left: $leftVal;
+  border-radius: $border_radius;
+  /* Make it round for radio buttons */
+}
 
-    @mixin radio-checkbox-checked ($image){
-      background: url($image) no-repeat center center; /* Custom checked image */
-      background-size: cover;
-      border: none;
-      width: 20px;
-      height: 20px;
-  }
-  
-  input[type='radio']:before {
-    @include radio-checkbox(10%,17%, 50% )
-  }
-  
-  input[type="radio"]:checked:before {
-    @include radio-checkbox-checked("./assets/images/icon-radio-selected.svg")
-  }
+@mixin radio-checkbox-checked ($image) {
+  background: url($image) no-repeat center center;
+  /* Custom checked image */
+  background-size: cover;
+  border: none;
+  width: 20px;
+  height: 20px;
+}
 
-  input[type='checkbox']:before {
-    @include radio-checkbox(10%,17%,0 )
-  }
-  
-  input[type="checkbox"]:checked:before {
-    @include radio-checkbox-checked("./assets/images/icon-checkbox-check.svg")
-  }
-  
-  .input-text {
-    display: grid;
-    margin-bottom: 1.5rem;
-  }
+input[type='radio']:before {
+  @include radio-checkbox(10%, 17%, 50%)
+}
 
-  fieldset {
-    border: none;
-    padding: 0;
-    legend {
-      margin: 1rem 0;
-    }
-    label {
-        border: 1px gray solid;
-        display: flex;
-        align-items: center;
-        padding: .7rem;
-        margin-bottom: 1rem;
-      }
-      input[type="radio"]:checked + label {
-        background-color: $Green-200-lighter;
-      }
-      label:has(input[type="radio"]:checked) {
-        background-color: $Green-200-lighter;
-        border: solid 1px $Green-600-medium ;
-      }
+input[type="radio"]:checked:before {
+  @include radio-checkbox-checked("./assets/images/icon-radio-selected.svg")
+}
+
+input[type='checkbox']:before {
+  @include radio-checkbox(10%, 17%, 0)
+}
+
+input[type="checkbox"]:checked:before {
+  @include radio-checkbox-checked("./assets/images/icon-checkbox-check.svg")
+}
+
+.input-text {
+  display: grid;
+  margin-bottom: 1.5rem;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+
+  legend {
+    margin: 1rem 0;
   }
 
-
-  .box {
-    position: relative;
+  label {
+    border: 1px gray solid;
     display: flex;
-    gap: .5rem;
     align-items: center;
-    padding: 2.2rem 0;
-    input {
-      margin: 0;
-    }
-  }
-  .checkbox-warn {
-    position: absolute;
-    bottom: 0;
-    
+    padding: .7rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
   }
 
-  input[type="submit"] {
-    background-color: $Green-600-medium;
-    color: $White;
-    border: none;
+  input[type="radio"]:checked+label {
+    background-color: $Green-200-lighter;
   }
 
-  .msg {
-    padding-bottom: 0;
+  label:has(input[type="radio"]:checked) {
+    background-color: $Green-200-lighter;
+    border: solid 1px $Green-600-medium ;
   }
+}
 
-  .submitted-popup {
-    position: absolute;
+.box {
+  position: relative;
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+  padding: 2.2rem 0;
+  cursor: pointer;
+
+  input {
+    margin: 0;
+  }
+}
+
+.checkbox-warn {
+  position: absolute;
+  bottom: 11px;
+}
+
+input[type="submit"] {
+  background-color: $Green-600-medium;
+  color: $White;
+  border: none;
+  cursor: pointer;
+}
+
+.msg {
+  padding-bottom: 0;
+}
+
+#submitted-popup {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  min-width: 300px;
+  .popup-content {
     background-color: $Grey-900-darker;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    top: 15%;
-    padding: 1rem;
-    border-radius: 10px;
-    color: $White;
-    width: 70%;
-    img {
-      margin-right: 1rem;
-      position: relative;
-      top: 3px;
-    }
-    h1 {
-      font-size: 1.2rem;
-    }
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
   }
+
+  img {
+    margin-right: 1rem;
+    position: relative;
+    top: 3px;
+  }
+
+  h1 {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+  }
+}
 
 
 // Desktop view
 
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 510px) {
 
   fieldset {
     div {
       display: flex;
       justify-content: space-between;
       column-gap: 1rem;
+
       label {
         width: 100%;
       }
     }
   }
- .input-text {
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-template-rows: auto auto auto auto auto auto;
-  grid-template-areas: 
-  "F-title L-title"
-  "F-input L-input"
-  "F-warn L-warn"
-  "eTitle eTitle"
-  "eInput eInput"
-  "eWarn eWarn";
-  column-gap: 1rem;
-  label[for="Fname"]{
-   grid-area: F-title;
-  }
-  .F-name-input {
-   grid-area: F-input;
-  }
-  .Fname-warn {
-    grid-area: F-warn;
-  }
-  label[for="Lname"] {
-    grid-area: L-title;
-  }
-  .L-name-input {
-    grid-area: L-input;
-  }
-  .Lname-warn{
-   grid-area: L-warn;
-  }
-  label[for="mail"] {
-    grid-area: eTitle;
-  }
-  input[type="email"] {
-    grid-area: eInput;
-  }
-  .email-warn {
-    grid-area: eWarn;
-  }
- } 
 
- .submitted-popup {
-  width: initial;
- }
+  .input-text {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto auto auto auto auto;
+    grid-template-areas:
+      "F-title L-title"
+      "F-input L-input"
+      "F-warn L-warn"
+      "eTitle eTitle"
+      "eInput eInput"
+      "eWarn eWarn";
+    column-gap: 1rem;
+
+    label[for="Fname"] {
+      grid-area: F-title;
+    }
+
+    .F-name-input {
+      grid-area: F-input;
+    }
+
+    .Fname-warn {
+      grid-area: F-warn;
+    }
+
+    label[for="Lname"] {
+      grid-area: L-title;
+    }
+
+    .L-name-input {
+      grid-area: L-input;
+    }
+
+    .Lname-warn {
+      grid-area: L-warn;
+    }
+
+    label[for="mail"] {
+      grid-area: eTitle;
+    }
+
+    input[type="email"] {
+      grid-area: eInput;
+    }
+
+    .email-warn {
+      grid-area: eWarn;
+    }
+  }
+
+  #submitted-popup {
+    width: max-content;
+  }
+
 }
