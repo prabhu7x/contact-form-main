@@ -188,6 +188,7 @@ input[type=submit] {
   transform: translateX(-50%);
   z-index: 1000;
   min-width: 300px;
+  color: hsl(0, 0%, 100%);
 }
 #submitted-popup .popup-content {
   background-color: hsl(187, 24%, 22%);
